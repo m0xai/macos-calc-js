@@ -1,0 +1,135 @@
+:root {
+  --orange: 36;
+  --hell-grau: 270;
+  --dunkel-grau: 280;
+  --bg: 280;
+}
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  height: 100vh;
+  width: 100vw;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#calc-wrap {
+  height: 324px;
+  width: 236px;
+  background-color: hsl(var(--bg), 2%, 33%);
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 5px 20px 40px hsl(var(--bg), 2%, 33%);
+  display: flex;
+  flex-direction: column;
+}
+
+#calc-header {
+  height: 78px;
+  width: 100%;
+}
+
+#widow-icons-wrapper {
+  margin: 3px auto auto 5px;
+}
+
+#num-disp {
+  text-align: left;
+  float: right;
+  font-size: 30px;
+  color: white;
+  font-weight: 100;
+  margin-right: 5px;
+}
+
+#calc-main {
+  display: grid;
+  grid-template-areas:
+    'head-func-wrapper operator-wrapper'
+    'num-wrapper operator-wrapper';
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 4fr;
+}
+
+#head-func-wrapper {
+  grid-area: head-func-wrapper;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0px 1px;
+}
+
+.head-func-btn {
+  background-color: hsl(var(--dunkel-grau), 1%, 39%);
+  border: none;
+}
+
+#num-wrapper {
+  grid-area: num-wrapper;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+}
+
+.num-btn,
+.num-btn-0 {
+  background-color: hsl(var(--hell-grau), 1%, 49%);
+  border: none;
+  color: white;
+  font-size: 20px;
+
+}
+
+.num-btn-0 {
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+}
+
+.num-btn,
+.operator-btn,
+.head-func-btn {
+  height: 50px;
+  width: 59px;
+  color: white;
+}
+
+.num-btn:hover,
+.num-btn-0:hover,
+.operator-btn:hover,
+.head-func-btn:hover {
+  filter: brightness(1.1);
+}
+
+.num-btn:active,
+.num-btn-0:active,
+.operator-btn:active,
+.head-func-btn:active {
+  filter: brightness(0.9);
+}
+
+#operator-wrapper {
+  grid-area: operator-wrapper;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1px 0px;
+
+}
+
+.operator-btn {
+  background-color: hsl(var(--orange), 100%, 50%);
+  border: none;
+  font-size: 20px;
+
+}

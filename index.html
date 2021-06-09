@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Einfache Rechener</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="calc-wrap">
+        <div id="calc-header">
+          <div id="widow-icons-wrapper">
+            <svg height="15" width="15">
+              <circle cx="7" cy="7" r="6" fill="rgb(245, 97, 89)" />
+            </svg>
+            <svg height="15" width="15">
+              <circle cx="7" cy="7" r="6" fill="rgb(246, 189, 53)" />
+            </svg>
+            <svg height="15" width="15">
+              <circle cx="7" cy="7" r="6" fill="rgb(66, 200, 67)" />
+            </svg>
+          </div>
+          <div id="num-disp">0</div>
+        </div>
+        <div id="calc-main">
+          <div id="head-func-wrapper">
+            <button
+              class="btn head-func-btn all-clear"
+              onclick="tasten(this)"
+              type="button"
+              value="ac"
+            >
+              AC
+            </button>
+            <button
+              class="btn head-func-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="plus-minus"
+            >
+              +/-
+            </button>
+            <button
+              class="btn head-func-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="%"
+            >
+              %
+            </button>
+          </div>
+          <div id="num-wrapper">
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="1"
+            >
+              1
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="2"
+            >
+              2
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="3"
+            >
+              3
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="4"
+            >
+              4
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="5"
+            >
+              5
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="6"
+            >
+              6
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="7"
+            >
+              7
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="8"
+            >
+              8
+            </button>
+            <button
+              class="btn num-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="9"
+            >
+              9
+            </button>
+            <button
+              class="btn num-btn-0"
+              onclick="tasten(this)"
+              type="button"
+              value="0"
+            >
+              0
+            </button>
+            <button
+              class="btn num-btn decimal"
+              onclick="tasten(this)"
+              type="button"
+              value="."
+            >
+              .
+            </button>
+          </div>
+          <div id="operator-wrapper">
+            <button
+              class="btn operator-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="/"
+            >
+              &divide;
+            </button>
+            <button
+              class="btn operator-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="*"
+            >
+              &times;
+            </button>
+            <button
+              class="btn operator-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="-"
+            >
+              -
+            </button>
+            <button
+              class="btn operator-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="+"
+            >
+              +
+            </button>
+            <button
+              class="btn operator-btn"
+              onclick="tasten(this)"
+              type="button"
+              value="="
+            >
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
