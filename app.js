@@ -1,31 +1,26 @@
 //TODO https://freshman.tech/calculator/
 const calc = {
-  reduceInputs: 0,
+  displayValue: '0',
   firstOperand: null,
   waitForSecOperand: false,
   operator: null,
-  numDisp: document.getElementById('num-disp'),
 };
 
-let displayArr = Array.from(calc.numDisp);
-calc.numDisp.innerHTML = displayArr;
-const resetCalc = () => {
-  displayArr = [];
-  calc.numDisp.innerHTML = 0;
-  calc.reduceInputs = 0;
-};
-function pushToScreen() {
-  calc.numDisp.innerHTML = calc.reduceInputs;
+calc.displayValue.length = 5;
+
+function updateDisplay() {
+  const display = document.getElementById('num-disp');
+  display.innerHTML = calc.displayValue;
 }
 
-// Reduce items in order to bring numbers
-let reduceItems = () => {
-  displayArr.reduce(function (a, b) {
-    return (calc.reduceInputs = a + b);
-  }, []);
+const resetCalc = () => {
+  calc.displayValue = '0';
+  calc.firstOperand = null;
+  calc.waitingForSecondOperand = false;
+  calc.operator = null;
 };
 
-//! Invoke EVERY button onclick
+// Invoke EVERY button onclick
 let tasten = (btn) => {
   switch (btn.value) {
     case '+':
@@ -38,6 +33,12 @@ let tasten = (btn) => {
     case '.':
       inputDecimal(btn.value);
       break;
+    case 'plus-minus':
+      addMinus();
+      break;
+    case '%':
+      percent();
+      break;
     case 'ac':
       resetCalc();
       break;
@@ -46,38 +47,77 @@ let tasten = (btn) => {
         inputDigit(btn.value);
       }
   }
+  updateDisplay();
 };
 
-let inputDigit = (arg) => {
-  const { reduceInputs, waitForSecOperand } = calc;
+function addMinus() {
+  if (!calc.displayValue.includes('-')) {
+    calc.displayValue = '-' + calc.displayValue;
+  }
+}
 
+function percent() {
+  calc.displayValue = calc.displayValue / 100;
+}
+
+let inputDigit = (arg) => {
+  const { displayValue, waitForSecOperand } = calc;
   if (waitForSecOperand === true) {
-    calc.reduceInputs = arg;
+    calc.displayValue = arg;
     calc.waitForSecOperand = false;
   } else {
-    displayArr.push(arg);
-    reduceItems();
-    pushToScreen();
+    calc.displayValue = displayValue === '0' ? arg : displayValue + arg;
     console.log(arg);
   }
 };
 
 let inputDecimal = (arg) => {
-  if (!displayArr.includes('.')) {
-    displayArr.push('.');
+  if (calc.waitingForSecondOperand === true) {
+    calc.displayValue = '0.';
+    calc.waitingForSecondOperand = false;
+    return;
+  }
+
+  if (!calc.displayValue.includes('.')) {
+    calc.displayValue + '.';
   }
   console.log(arg);
 };
 
 function handleOperator(nextOperator) {
-  const { reduceInputs, firstOperand, operator } = calc;
-  const inputValue = parseFloat(reduceInputs);
+  const { displayValue, firstOperand, operator } = calc;
+  const inputValue = parseFloat(displayValue);
+
+  if (operator && calc.waitingForSecondOperand) {
+    calc.operator = nextOperator;
+    return;
+  }
 
   if (firstOperand === null && !isNaN(inputValue)) {
     // Update the firstOperand property
     calc.firstOperand = inputValue;
+  } else if (operator) {
+    const result = makeCalc(firstOperand, inputValue, operator);
+    calc.displayValue = String(result);
+    calc.firstOperand = result;
   }
   calc.waitForSecOperand = true;
   calc.operator = nextOperator;
-  console.log(calc);
+  console.log(calc.operator);
+}
+
+function makeCalc(firstOperand, secondOperand, operator) {
+  if (operator === '+') {
+    return firstOperand + secondOperand;
+  } else if (operator === '-') {
+    return firstOperand - secondOperand;
+  } else if (operator === '*') {
+    return firstOperand * secondOperand;
+  } else if (operator === '/') {
+    return firstOperand / secondOperand;
+  } else if (operator === '%') {
+    return firstOperand / 100;
+  }
+
+  return secondOperand;
 }

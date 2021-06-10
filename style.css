@@ -1,10 +1,3 @@
-:root {
-  --orange: 36;
-  --hell-grau: 270;
-  --dunkel-grau: 280;
-  --bg: 280;
-}
-
 * {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -27,11 +20,11 @@
 #calc-wrap {
   height: 324px;
   width: 236px;
-  background-color: hsl(var(--bg), 2%, 33%);
+  background-color: rgb(78, 81, 86);
   border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 5px 20px 40px hsl(var(--bg), 2%, 33%);
+  box-shadow: 5px 20px 40px rgb(78, 81, 86);
   display: flex;
   flex-direction: column;
 }
@@ -42,7 +35,7 @@
 }
 
 #widow-icons-wrapper {
-  margin: 3px auto auto 5px;
+  margin: 3px 0 0 3px;
 }
 
 #num-disp {
@@ -52,6 +45,9 @@
   color: white;
   font-weight: 100;
   margin-right: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #calc-main {
@@ -71,7 +67,7 @@
 }
 
 .head-func-btn {
-  background-color: hsl(var(--dunkel-grau), 1%, 39%);
+  background-color: rgb(96, 97, 103);
   border: none;
 }
 
@@ -85,11 +81,10 @@
 
 .num-btn,
 .num-btn-0 {
-  background-color: hsl(var(--hell-grau), 1%, 49%);
+  background-color: rgb(122, 124, 128);
   border: none;
   color: white;
   font-size: 20px;
-
 }
 
 .num-btn-0 {
@@ -105,18 +100,14 @@
   color: white;
 }
 
-.num-btn:hover,
-.num-btn-0:hover,
-.operator-btn:hover,
-.head-func-btn:hover {
-  filter: brightness(1.1);
-}
-
 .num-btn:active,
 .num-btn-0:active,
-.operator-btn:active,
 .head-func-btn:active {
-  filter: brightness(0.9);
+  filter: brightness(1.5);
+}
+
+.operator-btn:active {
+  filter: opacity(0.7);
 }
 
 #operator-wrapper {
@@ -124,12 +115,10 @@
   display: grid;
   grid-auto-flow: row;
   gap: 1px 0px;
-
 }
 
 .operator-btn {
-  background-color: hsl(var(--orange), 100%, 50%);
+  background-color: rgb(246, 160, 27);
   border: none;
   font-size: 20px;
-
 }
